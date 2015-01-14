@@ -1,0 +1,50 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+
+$celestial-blue: #47A3DA;
+$primary-color: $celestial-blue;
+
+$tablet: new-breakpoint(max-width 840px 5);
+$mobile: new-breakpoint(max-width 500px 3);
+
+* { @include box-sizing(border-box); }
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: $primary-color;
+  font-family: $helvetica;
+}
+
+.container { @include outer-container; }
+
+.item {
+  padding: 2%;
+  @include span-columns(4);
+
+  @include media($tablet) {
+    @include span-columns(5);
+    .icon {
+      @include span-columns(2 of 5);
+    }
+
+    article {
+      @include span-columns(3 of 5);
+    }
+  }
+
+  @include media($mobile) {
+    @include span-columns(3);
+    .icon,
+    article { @include span-columns(3 of 3); }
+  }
+}
+
+.icon img {
+  width: 100%;
+  max-height: 100%;
+}
